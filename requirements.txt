@@ -1,0 +1,7 @@
+pandas
+selenium==4.1.3
+openpyxl
+xlsxwriter
+numpy
+tqdm
+requests
