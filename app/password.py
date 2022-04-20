@@ -16,10 +16,9 @@ def changePasswordCL(newPassword, driver):
     input_confirm_pass.click()
     input_confirm_pass.send_keys(newPassword)
     time.sleep(1)
-    driver.save_screenshot("screenshots/screenshot5.png")
+    driver.save_screenshot("registerCL/screenshot5.png")
     submit_button.click()
     time.sleep(10)
-    print("nueva contraseña: "+newPassword)
-    driver.save_screenshot("screenshots/screenshot6.png")
+    driver.save_screenshot("registerCL/screenshot6.png")
     return driver
 

@@ -1,20 +1,22 @@
 from register import registerCL, registerES
 from selenium import webdriver
 from api_mail import generateEmail
-# generate random number of 9, starting with 9
-import random
+from generate_user import *
+from login import loginCL, loginES
+from readcsv import get_users
+from tqdm import tqdm
 print("Selenium Version: "+str(webdriver.__version__))
-def randomNumber():
-    phone = "9"
-    for i in range(8):
-        phone += str(random.randint(0, 9))
-    print("telefono:",phone)
-    return phone
 email = generateEmail()
-#registerCL("Pata", "Poto", email, randomNumber, "Ff123.", "Aa123.")
-def randomNameGenerator():
-    name = ""
-    for i in range(random.randint(3, 10)):
-        name += chr(random.randint(65, 90))
-    return name
-registerES(randomNameGenerator(), email, "Ff123.")
+name = randomNameGenerator()
+password = randomPasswordGenerator()
+phone = randomNumberGenerator()
+with open("generated_users.csv", "a") as f:
+    f.write(email+","+password+"\n")
+print("Signing up...")
+registerCL(name, "lastname", email, phone, password, "Aa123.")
+registerES(name, email, password)
+print("Loging in...")
+for user in tqdm(get_users()):
+    loginCL(user[0], user[1])
+    loginES(user[0], user[1])
+    

@@ -11,5 +11,6 @@ def get_data():
         print(email,password)
         users.append((email,password))
     return users
-
-
+def get_users():
+    df = pd.read_csv("generated_users.csv")
+    return df.values.tolist()
