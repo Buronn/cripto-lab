@@ -4,7 +4,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
-def changePassword(newPassword, driver):
+def changePasswordCL(newPassword, driver):
     update_password = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/div/div/main/div/button[5]")))
     update_password.click()
     time.sleep(1)

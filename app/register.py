@@ -4,10 +4,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 from config import set_chrome_options
-from mail import readMails, readMail
-from password import changePassword
+from api_mail import readMails, readMail
+from password import changePasswordCL
 
-def register(firstname: str, lastname: str, email: str, phone: str, password: str, password2: str) -> None:
+def registerCL(firstname: str, lastname: str, email: str, phone: str, password: str, password2: str) -> None:
     # Print selenium version
     print("email: "+email+"\npassword: "+password)
     driver = webdriver.Chrome(options=set_chrome_options())
@@ -35,10 +35,10 @@ def register(firstname: str, lastname: str, email: str, phone: str, password: st
         input_password2.click()
         input_password2.send_keys(password)
         time.sleep(1)
-        driver.save_screenshot("screenshots/screenshot1.png")
+        driver.save_screenshot("screenshotsCL/screenshot1.png")
         submit_button.click()
         time.sleep(5)
-        driver.save_screenshot("screenshots/screenshot2.png")
+        driver.save_screenshot("screenshotsCL/screenshot2.png")
         input_verification_code= WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "code")))
         input_verification_code.click()
         mails = readMails(email)
@@ -48,14 +48,47 @@ def register(firstname: str, lastname: str, email: str, phone: str, password: st
         submit_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div/main/div[1]/form/button")))
         time.sleep(1)
         submit_button.click()
-        driver.save_screenshot("screenshots/screenshot3.png")
+        driver.save_screenshot("screenshotsCL/screenshot3.png")
         time.sleep(5)
         # print actual url
         print("Registrado correctamente")
-        driver.save_screenshot("screenshots/screenshot4.png")
-        changePassword(password2, driver)
-
-
+        driver.save_screenshot("screenshotsCL/screenshot4.png")
+        changePasswordCL(password2, driver)
 
     finally:
         driver.close()
+def registerES(name: str, email: str, password: str) -> None:
+    print("email: "+email+"\npassword: "+password)
+    driver = webdriver.Chrome(options=set_chrome_options())
+    driver.set_window_size(1920,1080)
+    driver.get("https://sushihe5.es/login-email")
+    time.sleep(1)
+    try:
+        driver.save_screenshot("screenshotsES/screenshot1.png")
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/app-root/div/app-login-email/form/div/div[1]/div/div/label[2]"))).click()
+        input_name = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/app-root/div/app-login-email/form/div/div[3]/div[1]/input")))
+        input_email = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/app-root/div/app-login-email/form/div/div[4]/div[1]/input")))
+        input_pass1 = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/app-root/div/app-login-email/form/div/div[5]/div[1]/input")))
+        input_pass2 = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/app-root/div/app-login-email/form/div/div[6]/div[1]/input")))
+        submit_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/app-root/div/app-login-email/form/div/div[7]/button")))
+        input_name.click()
+        input_name.send_keys(name)
+        input_email.click()
+        input_email.send_keys(email)
+        input_pass1.click()
+        input_pass1.send_keys(password)
+        input_pass2.click()
+        input_pass2.send_keys(password)
+        submit_button.click()
+        time.sleep(1)
+        driver.save_screenshot("screenshotsES/screenshot2.png")
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/app-root/div/bs-navbar/nav/div/ul[2]/app-user-menu/li/a"))).click()
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/app-root/div/bs-navbar/nav/div/ul[2]/app-user-menu/li/div/a[1]"))).click()
+        time.sleep(2)
+        driver.save_screenshot("screenshotsES/screenshot3.png")
+
+    finally:
+        driver.close()
+
+        
+
