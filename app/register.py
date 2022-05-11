@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
+import os
 from config import set_chrome_options
 from api_mail import readMails, readMail
 from password import changePasswordCL
@@ -13,6 +14,9 @@ def registerCL(firstname: str, lastname: str, email: str, phone: str, password: 
     driver.set_window_size(1024, 768)
     driver.get("https://account.getagil.com/signup")
     time.sleep(1)
+    domain = "test_register_CL"
+    if not os.path.exists(domain):
+        os.makedirs(domain)
     try:
         input_name = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "name")))
         input_lastName = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "lastName")))
@@ -34,10 +38,10 @@ def registerCL(firstname: str, lastname: str, email: str, phone: str, password: 
         input_password2.click()
         input_password2.send_keys(password)
         time.sleep(1)
-        driver.save_screenshot("registerCL/screenshot1.png")
+        driver.save_screenshot(domain+"/screenshot1.png")
         submit_button.click()
         time.sleep(5)
-        driver.save_screenshot("registerCL/screenshot2.png")
+        driver.save_screenshot(domain+"/screenshot2.png")
         input_verification_code= WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "code")))
         input_verification_code.click()
         mails = readMails(email)
@@ -46,10 +50,10 @@ def registerCL(firstname: str, lastname: str, email: str, phone: str, password: 
         submit_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/div[1]/div/main/div[1]/form/button")))
         time.sleep(1)
         submit_button.click()
-        driver.save_screenshot("registerCL/screenshot3.png")
-        time.sleep(5)
+        driver.save_screenshot(domain+"/screenshot3.png")
+        time.sleep(8)
         # print actual url
-        driver.save_screenshot("registerCL/screenshot4.png")
+        driver.save_screenshot(domain+"/screenshot4.png")
         changePasswordCL(password2, driver)
 
     finally:
@@ -59,8 +63,12 @@ def registerES(name: str, email: str, password: str) -> None:
     driver.set_window_size(1920,1080)
     driver.get("https://sushihe5.es/login-email")
     time.sleep(1)
+    domain = "test_register_ES"
+    if not os.path.exists(domain):
+        os.makedirs(domain)
+
     try:
-        driver.save_screenshot("registerES/screenshot1.png")
+        driver.save_screenshot(domain+"/screenshot1.png")
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/app-root/div/app-login-email/form/div/div[1]/div/div/label[2]"))).click()
         input_name = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/app-root/div/app-login-email/form/div/div[3]/div[1]/input")))
         input_email = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/app-root/div/app-login-email/form/div/div[4]/div[1]/input")))
@@ -77,11 +85,11 @@ def registerES(name: str, email: str, password: str) -> None:
         input_pass2.send_keys(password)
         submit_button.click()
         time.sleep(1)
-        driver.save_screenshot("registerES/screenshot2.png")
+        driver.save_screenshot(domain+"/screenshot2.png")
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/app-root/div/bs-navbar/nav/div/ul[2]/app-user-menu/li/a"))).click()
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/app-root/div/bs-navbar/nav/div/ul[2]/app-user-menu/li/div/a[1]"))).click()
         time.sleep(2)
-        driver.save_screenshot("registerES/screenshot3.png")
+        driver.save_screenshot(domain+"/screenshot3.png")
 
     finally:
         driver.close()

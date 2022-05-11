@@ -9,7 +9,7 @@ from readcsv import get_data
 print("Selenium Version: "+str(webdriver.__version__))
 def aestudiar(user: str, pasw: str):
     URL = "http://www.aestudiar.cl"
-    domain = "aestudiar.cl"
+    domain = "test_aestudiar.cl"
     driver = webdriver.Chrome(options=set_chrome_options())
     driver.set_window_size(1024, 768)
     driver.get(URL)
@@ -33,7 +33,7 @@ def aestudiar(user: str, pasw: str):
         driver.close()
 def educarex(user: str, pasw: str):
     URL = "https://radioedu.educarex.es/radiotomate/wp-login.php?loggedout=true&wp_lang=es_ES"
-    domain = "radioedu.educarex.es"
+    domain = "test_radioedu.educarex.es"
     driver = webdriver.Chrome(options=set_chrome_options())
     driver.set_window_size(1024, 768)
     driver.get(URL)
