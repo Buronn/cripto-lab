@@ -11,7 +11,7 @@ def loginCL(email: str, pasw: str):
     driver.set_window_size(1024, 768)
     driver.get("https://account.getagil.com/signin")
     time.sleep(1)
-    domain = "test_login_CL"
+    domain = "hito_iii/test_login_CL"
     if not os.path.exists(domain):
         os.makedirs(domain)
     try:
@@ -33,7 +33,7 @@ def loginES(email:str, pasw:str):
     driver.set_window_size(1920,1080)
     driver.get("https://sushihe5.es/login-email")
     time.sleep(1)
-    domain = "test_login_ES"
+    domain = "hito_iii/test_login_ES"
     if not os.path.exists(domain):
         os.makedirs(domain)
     try:

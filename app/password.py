@@ -8,7 +8,7 @@ def changePasswordCL(newPassword, driver):
     update_password = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/div/div/main/div/button[5]")))
     update_password.click()
     time.sleep(1)
-    domain = "test_password_CL"
+    domain = "hito_iii/test_password_CL"
     if not os.path.exists(domain):
         os.makedirs(domain)
     input_pass = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "password")))

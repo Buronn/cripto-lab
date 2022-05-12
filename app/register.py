@@ -14,7 +14,7 @@ def registerCL(firstname: str, lastname: str, email: str, phone: str, password: 
     driver.set_window_size(1024, 768)
     driver.get("https://account.getagil.com/signup")
     time.sleep(1)
-    domain = "test_register_CL"
+    domain = "hito_iii/test_register_CL"
     if not os.path.exists(domain):
         os.makedirs(domain)
     try:
@@ -63,7 +63,7 @@ def registerES(name: str, email: str, password: str) -> None:
     driver.set_window_size(1920,1080)
     driver.get("https://sushihe5.es/login-email")
     time.sleep(1)
-    domain = "test_register_ES"
+    domain = "hito_iii/test_register_ES"
     if not os.path.exists(domain):
         os.makedirs(domain)
 
