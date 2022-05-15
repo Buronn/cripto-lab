@@ -56,7 +56,7 @@ def PasswordTestCL(url: str, password_length: int) -> None:
         f.write(str(res.json()))
     return res.json()["message"]
 
-PasswordTestES("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAhj24Tdnxfr37EDXimO_tA-Cl6RQeMqCc",100000)
+PasswordTestES("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAhj24Tdnxfr37EDXimO_tA-Cl6RQeMqCc",1000000)
 for i in range (257,0,-1):
     if PasswordTestCL("https://lambda.getagil.com/prod-auth/register",i) == "No es posible registrar al usuario":
         print("Password length: "+str(i))
