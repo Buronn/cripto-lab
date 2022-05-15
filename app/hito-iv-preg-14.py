@@ -61,3 +61,5 @@ for i in tqdm(range(100)):
     driver1.get("https://account.getagil.com/signin")
     loginCL(email, password, driver1,i)
     loginES(email, password, driver2,i)
+driver1.close()
+driver2.close()
