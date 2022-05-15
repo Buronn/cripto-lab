@@ -31,13 +31,13 @@ Tener Docker y Docker Compose instalado
 
 ## 🔰 Comenzando
 
-Para iniciar el proyecto, primero hay que copiar el repositorio y luego escribir los siguientes comandos en la consola:
+Para iniciar el proyecto, primero hay que copiar el repositorio y luego escribir los siguientes comandos en la consola dentro del directorio del repositorio:
 * docker
 ```sh
 # docker-compose build
 # docker-compose up -d
 ```
-Luego hacer attach en el contenedor y utilizar alguno o varios de los siguientes comandos
+Luego hacer attach al contenedor y utilizar alguno o varios de los siguientes comandos dentro de este:
 * python
 ```sh
 # python main.py
