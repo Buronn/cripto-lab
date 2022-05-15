@@ -1,7 +1,7 @@
 <br />
 <div align="center">
 
-  <h3 align="center">Criptografía y Seguridad en redes: Laboratorio 02 Passwords</h3>
+  <h3 align="center">Criptografía y Seguridad en Redes: Laboratorio 02 Passwords</h3>
 
   <p align="center">
     Fernando Burón
