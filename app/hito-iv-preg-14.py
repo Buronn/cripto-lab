@@ -50,7 +50,7 @@ def loginES(email, pasw,driver,i):
 
 
 email = "d1pxdkmotii@1secmail.org"
-password = randomPasswordGenerator()
+
 driver1 = webdriver.Chrome(options=set_chrome_options())
 driver1.set_window_size(1024, 768)
 driver1.get("https://account.getagil.com/signin")
@@ -58,6 +58,7 @@ driver2 = webdriver.Chrome(options=set_chrome_options())
 driver2.set_window_size(1024, 768)
 driver2.get("https://sushihe5.es/login-email")
 for i in tqdm(range(100)):
+    password = randomPasswordGenerator()
     driver1.get("https://account.getagil.com/signin")
     loginCL(email, password, driver1,i)
     loginES(email, password, driver2,i)
